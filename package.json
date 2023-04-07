@@ -1,0 +1,17 @@
+{
+  "name": "timecard-server-v2.0.0",
+  "version": "2.0.0",
+  "description": "Version 2 of Timecard server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "Aaron Cruz",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "winston": "^3.8.2"
+  }
+}
