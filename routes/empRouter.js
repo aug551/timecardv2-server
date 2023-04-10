@@ -1,8 +1,10 @@
-const express = require('express')
+const express = require('express');
+const { logger } = require('../logger');
 const router = express.Router();
 
+router.post('/login', (req, res) => {
+    logger.info(`Login requested for: ${"test"}`)
 
-router.get('/login', (req, res) => {
     // TODO: implement database
     let emp = {
         id: 1,
