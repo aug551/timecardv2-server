@@ -11,13 +11,13 @@ const logger = require('./logger');
 const empRouter = require('./routes/empRouter');
 
 // Middlewares
-// var corsOptions = {
-//     origin: 'http://localhost:5173',
-//     optionsSuccessStatus: 200
-// }
+var corsOptions = {
+    origin: 'http://localhost:5173',
+    optionsSuccessStatus: 200
+}
 
-// app.use('/emp', cors(corsOptions), empRouter);
-app.use('/emp', empRouter);
+app.use('/emp', cors(corsOptions), empRouter);
+// app.use('/emp', empRouter);
 
 // Setup
 

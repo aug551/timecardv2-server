@@ -14,6 +14,7 @@ router.post('/login', async (req, res) => {
     try {
         let data = await query(getEmployeeById, [empId]);
         let emp = JSON.stringify(data);
+        console.log(emp)
         logger.info(`Found: ${emp}`);
         res.send(emp);
     }
@@ -64,8 +65,9 @@ router.post('/punch-out', async (req, res) => {
         }
 
         let data = await query(punchOut, [latestShift.shiftid]);
+        let result = JSON.stringify(data);
         logger.info(`Updated shift: ${data.shiftid}`);
-        return res.send(data);
+        return res.send(result);
     }
     catch (error) {
         logger.error(error.message + ` Query: punch-out (empId: ${empId})`);
