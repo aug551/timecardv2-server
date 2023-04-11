@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS employees(
+    empId INT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY,
+    empName VARCHAR(60) NOT NULL,
+    empJob VARCHAR(60),
+    isManager BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE IF NOT EXISTS shifts(
+    shiftId INT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY,
+    empId INT NOT NULL,
+    shiftStart TIMESTAMP,
+    shiftEnd TIMESTAMP,
+    CONSTRAINT fk_empId
+        FOREIGN KEY(empId)
+            REFERENCES employees(empId)
+);

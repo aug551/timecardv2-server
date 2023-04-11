@@ -1,1 +1,6 @@
-GET http://localhost:4000/emp/login/
+POST http://localhost:4000/emp/punch-out/
+Content-Type: application/json
+
+{
+    "empId": 1
+}

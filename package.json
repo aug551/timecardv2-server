@@ -14,6 +14,8 @@
     "express": "^4.18.2",
     "http-proxy-middleware": "^2.0.6",
     "nodemon": "^2.0.22",
-    "winston": "^3.8.2"
+    "pg-promise": "^11.4.3",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
   }
 }
