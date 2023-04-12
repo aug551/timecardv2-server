@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS employees(
 CREATE TABLE IF NOT EXISTS shifts(
     shiftId INT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY,
     empId INT NOT NULL,
-    shiftStart TIMESTAMP,
-    shiftEnd TIMESTAMP,
+    shiftStart TIMESTAMP WITH TIME ZONE,
+    shiftEnd TIMESTAMP WITH TIME ZONE,
     CONSTRAINT fk_empId
         FOREIGN KEY(empId)
             REFERENCES employees(empId)

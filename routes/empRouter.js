@@ -34,6 +34,9 @@ router.post('/shifts', async (req, res) => {
         res.send(shifts);
     }
     catch (error) {
+        if (error.message == 'No data returned from the query.') {
+            return res.send([]);
+        }
         logger.error(error.message + ` Query: shiftById(${empId})`);
         res.status(400).send(error.message);
     }
@@ -45,6 +48,7 @@ router.post('/punch-in', async (req, res) => {
     try {
         let data = await query(punchIn, [empId]);
         let newShift = JSON.stringify(data);
+        console.log(newShift);
         logger.info(`Inserted shift: ${newShift.shiftId}`);
         res.send(newShift);
     }
