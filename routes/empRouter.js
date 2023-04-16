@@ -14,7 +14,6 @@ router.post('/login', async (req, res) => {
     try {
         let data = await query(getEmployeeById, [empId]);
         let emp = JSON.stringify(data);
-        console.log(emp)
         logger.info(`Found: ${emp}`);
         res.send(emp);
     }
