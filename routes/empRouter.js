@@ -15,6 +15,8 @@ router.post('/login', async (req, res) => {
         let data = await query(getEmployeeById, [empId]);
         let emp = JSON.stringify(data);
         logger.info(`Found: ${emp}`);
+
+        if (data.ismanager) return res.send(JSON.stringify({ requirePwd: true }));
         res.send(emp);
     }
     catch (error) {

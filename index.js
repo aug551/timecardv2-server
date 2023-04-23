@@ -9,6 +9,7 @@ const logger = require('./logger');
 
 // Routers
 const empRouter = require('./routes/empRouter');
+const adminRouter = require('./routes/adminRouter');
 
 // Middlewares
 var corsOptions = {
@@ -17,6 +18,7 @@ var corsOptions = {
 }
 
 app.use('/emp', cors(corsOptions), empRouter);
+app.use('/admin', cors(corsOptions), adminRouter);
 // app.use('/emp', empRouter);
 
 // Setup

@@ -14,3 +14,8 @@ CREATE TABLE IF NOT EXISTS shifts(
         FOREIGN KEY(empId)
             REFERENCES employees(empId)
 );
+
+CREATE TABLE IF NOT EXISTS manager_pass(
+    empId INT PRIMARY KEY REFERENCES employees,
+    pwd VARCHAR NOT NULL DEFAULT 'kiku'
+);
