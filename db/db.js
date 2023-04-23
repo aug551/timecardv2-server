@@ -24,4 +24,14 @@ async function queryMultiple(statement, values) {
     }
 }
 
-module.exports = { query, queryMultiple };
+async function queryNull(statement, values) {
+    try {
+        let result = await db.none(statement, values);
+        return result;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
+module.exports = { query, queryMultiple, queryNull };
