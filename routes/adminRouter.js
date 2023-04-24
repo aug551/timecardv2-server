@@ -2,9 +2,9 @@ const express = require('express');
 const logger = require('../logger');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { query } = require('../db/db');
+const { query, queryMultiple } = require('../db/db');
 const { getManagerPwd, setManagerPwd } = require('../db/manager_pass-statements');
-const { getEmployeeById } = require('../db/emp-statements');
+const { getEmployeeById, getAllEmployees, addEmployee } = require('../db/emp-statements');
 const saltRounds = 10;
 
 router.use(express.json());
@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('set-pwd', async (req, res) => {
+router.post('/set-pwd', async (req, res) => {
     let adminId = req.body.empId;
     let adminPwd = req.body.password;
     let hashPwd = await bcrypt.hash(adminPwd, saltRounds);
@@ -63,5 +63,30 @@ router.post('set-pwd', async (req, res) => {
         res.sendStatus(500);
     }
 })
+
+router.get('/getallemps', async (req, res) => {
+    try {
+        let data = await queryMultiple(getAllEmployees);
+        res.send(JSON.stringify(data));
+    }
+    catch (err) {
+        logger.error(err);
+        res.send(err);
+    }
+});
+
+
+router.post('/add-emp', async (req, res) => {
+
+    try {
+        let data = await query(addEmployee, [req.body.empName, req.body.empJob, req.body.isManager]);
+        res.send(JSON.stringify(data));
+    }
+    catch (err) {
+        logger.error(err);
+        res.send(err);
+    }
+})
+
 
 module.exports = router;
